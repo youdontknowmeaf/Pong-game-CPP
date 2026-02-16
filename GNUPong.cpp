@@ -1,3 +1,13 @@
+/*
+RRRR    AAAA   NN  N TTTTTTT
+R  R    A  A   N N N    T
+RRRR    AAAA   N  NN    T
+R   R   A  A   N   N    T
+R    R  A  A   N   N    T
+
+You are using a outdated version of the program, please check the readme file in the repository.
+
+*/
 #include <iostream>
 #include <raylib.h>
 
