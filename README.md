@@ -14,14 +14,14 @@ OR
 - Making a fun project that others can learn from by interacting with user friendly config.
 
 # CHANGELOG
-**pre-v1**:
+- **pre-v1**:
 - First playable version
-**v1**:
+- **v1**:
 - Created user friendly configuration
 - Created python setup
 - Created shell auto-compile
 - Reset the pre-defined colors to RED + BLUE.
-**v1.1**:
+- **v1.1**:
 - Added additional features to configuration
 - Improved the python script
 - Improved shell auto-compile
