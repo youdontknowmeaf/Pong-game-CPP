@@ -3,7 +3,7 @@
 1. ``git clone https://github.com/youdontknowmeaf/Pong-game-CPP.git``
 2. ``cd Pong-game-CPP/Pong``
 3. ``python3 setup.py``
-4. To launch the game you must do ``./out`` and to recompile it you can:
+4. To launch the game you write ``./out`` and to recompile it you can:
 - ``g++ main.cpp -o Pong -lraylib`` (for main version)
 - ``gcc lightweigh-pong.c -o Lightweigh-Pong -lraylib -lm`` (for lightweigh version)
 OR
@@ -32,3 +32,5 @@ OR
 - Added compile instructions for lightweigh pong
 - Added lightweigh pong
 - Minor cosmetic changes
+- **v1.1.2**
+- The game's speed is no longer dependend on FPS.
