@@ -1,6 +1,8 @@
 #include <iostream>
 #include <raylib.h>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
 float delta = 1;
 
@@ -16,7 +18,7 @@ float delta = 1;
 						// Beginning score of left player
 	int score_right = 0;			// To samo co wcześniej, dla prawego
 						// Same as before but for right player
-      //bool zen_mode = false;			// Tryb ZEN (brak resetu piłki)
+      bool zen_mode = false;			// Tryb ZEN (brak resetu piłki)
 						// ZEN mode (no ball resetting)
 	int MaxFps = 45;			// Maksymalna liczba FPS
 					 	// Max FPS limit
@@ -93,22 +95,23 @@ class Ball {
         x += speed_x * delta;
         y += speed_y * delta;
 
+		if(!zen_mode) {
         if(y + radius >= GetScreenHeight() || y - radius <= 0)
         {
             speed_y *= -1;
-        }
+        } }
 
 	// Why did I make this shit under this comment...?
 	// Update idea: Zen mode.
 	// <rant> It's not a bug, it's a feature. </rant>
-																/*
+																// /*
 	if(zen_mode) {
 	if(x + radius >= GetScreenWidth() || x - radius <= 0)
         {
             speed_x *= -1;
         }
 	}
-																*/
+																// */
     }
 };
 
@@ -168,6 +171,7 @@ class PaddleWSAD: public PaddleArrow
 
 int main()
 {
+	srand(time(NULL)); // random ball & shit
     Ball ball;
     PaddleWSAD paddlel;
     PaddleArrow paddler;
@@ -191,20 +195,22 @@ int main()
     paddler.y = screen_height/2 - paddler.height/2;
     paddler.speed = paddle_speed * delta;
 
+	int randNum = 0; // jst for safety :-D
     while(WindowShouldClose() == false)
     {
+		randNum = (rand() % 5) + 1; // random num vol 2 lul
         BeginDrawing();
 
 	delta = GetFrameTime();
         
         if(CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{paddlel.x, paddlel.y, paddlel.width, paddlel.height}))
         {
-            ball.speed_x *= -1;
+            ball.speed_x *= -(randNum);
 	    score_left += 1;
         }
         if(CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{paddler.x, paddler.y, paddler.width, paddler.height}))
         {
-            ball.speed_x *= -1;
+            ball.speed_x *= -(randNum);
 	    score_right += 1;
         }
 	if(ball.x < 3 || ball.x > GetScreenWidth()-3)
@@ -212,6 +218,8 @@ int main()
             ball.x = GetScreenWidth()/2;
             ball.y = GetScreenHeight()/2;
         }
+
+		if(ball.speed_x >= 20) ball.speed_x = randNum;
 
         ball.update();
 
