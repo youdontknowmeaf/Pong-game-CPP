@@ -4,10 +4,8 @@
 2. ``cd Pong-game-CPP/Pong``
 3. ``python3 setup.py``
 4. To launch the game you write ``./out`` and to recompile it you can:
-- ``g++ main.cpp -o Pong -lraylib`` (for main version)
+- ``make`` or ``g++ main.cpp -o Pong -lraylib`` or ./build.sh (for main version)
 - ``gcc lightweigh-pong.c -o Lightweigh-Pong -lraylib -lm`` (for lightweigh version)
-OR
-- ``./build.sh``
 
 # GOALS
 - Recreating 1972 pong with QOL features
@@ -33,4 +31,8 @@ OR
 - Added lightweigh pong
 - Minor cosmetic changes
 - **v1.1.2**
-- The game's speed is no longer dependend on FPS.
+- The game's speed is no longer dependend on FPS
+- **v1.2**
+- Created a Makefile build system for convinience
+- Implemented Zen mode
+- Implemented Random Ball Speed when it hits something
