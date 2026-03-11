@@ -32,6 +32,7 @@
         float paddle_width = 25;
         float paddle_height = 80;
         Color paddle_color = RED;
+		int paddles_speed = 200;
 
 // ---------------------------------[ Ball conf. ]---------------------------------
 
@@ -74,11 +75,11 @@ int main(void) {
 	if(pa.y <= 0) pa.y = 0;
 
 	
-	if(IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) p1.y += 200 * delta;
-	if(IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) p1.y -= 200 * delta;
+	if(IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) p1.y += paddles_speed * delta;
+	if(IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) p1.y -= paddles_speed * delta;
 	
-	if(b.y > pa.y) { pa.y += 140 * delta;
-	} else { pa.y -= 140 * delta; }
+	if(b.y > pa.y) { pa.y += paddles_speed-60 * delta;
+	} else { pa.y -= paddles_speed-60 * delta; }
 	
 	ClearBackground(BLACK);
 
